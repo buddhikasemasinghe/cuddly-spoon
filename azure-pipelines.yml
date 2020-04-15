@@ -1,0 +1,58 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+stages:
+  - stage: build
+    jobs:
+    - job: build
+      pool:
+        vmImage: 'ubuntu-latest'
+
+      steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
+        displayName: 'Install Node.js'
+
+      - script: |
+          npm install
+          npm run build
+        displayName: 'npm install and build'
+
+      - task: CopyFiles@2
+        inputs:
+          SourceFolder: 'build'
+          TargetFolder: '$(build.artifactstagingdirectory)'
+          CleanTargetFolder: true
+        displayName: 'Copy Files'
+  
+      - task: PublishBuildArtifacts@1      
+        inputs:
+          PathtoPublish: '$(build.artifactstagingdirectory)'
+          ArtifactName: 'build'
+        displayName: 'Publish Build Artifacts'
+      
+  - stage: deploy
+    jobs:
+    - deployment: deploy
+      pool:
+        vmImage: 'vs2017-win2016'
+      environment: 'Deploy to Storage'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - download: current
+              artifact: build      
+            - task: AzureFileCopy@3
+              inputs:
+                sourcePath: $(Pipeline.Workspace)/build
+                azureSubscription: 'Free Trial (6d4021a1-c415-4d4f-84d4-5116d428ad0f)'
+                destination: azureBlob
+                storage: 'covid19modelizer'
+                containerName: '$web'

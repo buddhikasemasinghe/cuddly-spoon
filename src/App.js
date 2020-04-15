@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-         🦁Covid 19 Dashboard 🙈
+         🦁 My Covid 19 Dashboard with Apollo Client 🙈
       </header>
     </div>
   );
