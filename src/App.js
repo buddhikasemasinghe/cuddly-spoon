@@ -1,13 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CountryList from './CountryList';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-         🦁 My Covid 19 Dashboard with Apollo Client 🙈
+         <h1>🦁 My Covid 19 Dashboard with Apollo Client 🙈</h1>
+         <CountryList />
       </header>
     </div>
   );
