@@ -1,19 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
-import App from './App';
 import ApolloClient from 'apollo-boost';
-import { gql } from "apollo-boost";
 import { ApolloProvider } from '@apollo/react-hooks';
+import HomePage from './pages/HomePage';
 
 const client = new ApolloClient({
   uri: 'https://covid19-modelizer-proxy.azurewebsites.net/',
 });
 
-const Render = () => (
+const Root = () => (
   <ApolloProvider client={client}>
-    <App />
+    <HomePage />
   </ApolloProvider>
 );
 
-render(<Render />, document.getElementById('root'));
+render(<Root />, document.getElementById('root'));
