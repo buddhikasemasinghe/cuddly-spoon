@@ -5,10 +5,8 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Chart from '../components/LineChart';
-import WorldSummary from '../components/WorldSummary';
-import Copyright from '../components/Copyright';
-import WorldSummaryBarChart from '../sections/WorldSummaryBarChart';
+import Countries from '../components/Countries';
+import RaceChart from '../components/RaceChart';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,38 +21,30 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
     },
     fixedHeight: {
-        height: 400,
+        height: 540,
     },
 }));
 
-const Dashboard = () => {
+const CountryProfile = () => {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     return (
         <Container maxWidth="lg" className={classes.container}>
-            <Grid container spacing={3}>
+            <Grid container spacing={1}>
                 {/* Chart */}
-                <Grid item xs={12} md={8} lg={8}>
+                <Grid item xs={12} md={9} lg={10}>
                     <Paper className={fixedHeightPaper}>
-                        <WorldSummaryBarChart />
+                     <RaceChart />
                     </Paper>
                 </Grid>
-                <Grid item xs={12} md={4} lg={4}>
+                <Grid item xs={12} md={3} lg={2}>
                     <Paper className={fixedHeightPaper}>
-                        <Chart />
-                    </Paper>
-                </Grid>
-                <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                        <WorldSummary />
+                     <Countries />
                     </Paper>
                 </Grid>
             </Grid>
-            <Box pt={4}>
-                <Copyright />
-            </Box>
         </Container>
     )
 };
-export default Dashboard;
+export default CountryProfile;

@@ -44,7 +44,7 @@ export default function Chart() {
                 }}
                 axisBottom={{
                     format: '%b %d',
-                    tickValues: 'every 10 days',
+                    tickValues: 'every 21 days',
                     legend: 'Date',
                     legendOffset: -12,
                 }}
