@@ -12,6 +12,7 @@ const COUNTRIES = gql`
     listCountries {
       name
       slug
+      countryCode
     }
   }
 `;

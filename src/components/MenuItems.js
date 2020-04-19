@@ -19,7 +19,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button onClick={() => navigate('/')}>
+    <ListItem button onClick={() => navigate('/main')}>
       <ListItemIcon>
         <DirectionsRunIcon />
       </ListItemIcon>

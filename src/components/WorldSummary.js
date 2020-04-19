@@ -18,6 +18,7 @@ const WORLD_SUMMARY_BY_TOTAL_CONFIRMED = gql`
 {
     topCasesByStatus(status: TotalConfirmed, range: 20) {
       slug
+      countryName
       totalConfirmed
       totalDeaths
       totalRecovered
@@ -62,7 +63,7 @@ export default function WorldSummary() {
                 <TableBody>
                     {data.topCasesByStatus.map((row) => (
                         <TableRow key={row.slug}>
-                            <TableCell>{row.slug}</TableCell>
+                            <TableCell>{row.countryName}</TableCell>
                             <TableCell>{row.totalConfirmed}</TableCell>
                             <TableCell>{row.totalDeaths}</TableCell>
                             <TableCell>{row.totalRecovered}</TableCell>

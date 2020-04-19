@@ -53,7 +53,7 @@ export default function Chart() {
                     legendOffset: 12,
                 }}
                 enableGridX={false}
-                animate='true'
+                animate={true}
                 curve="monotoneX"
                 enableSlices='x'
                 data={[

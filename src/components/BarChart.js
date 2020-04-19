@@ -7,12 +7,12 @@ import { generateCountriesData, sets } from '@nivo/generators'
 
 import Title from './Title';
 
-const keys = ['hot dogs', 'burgers', 'sandwich', 'kebab', 'fries', 'donut']
-const commonProps = {
-    margin: { top: 25, right: 5, bottom: 50, left: 35 },
-    data: generateCountriesData(keys, { size: 7 }),
-    indexBy: 'country',
-    keys,
+//const keys = ['hot dogs', 'burgers', 'sandwich', 'kebab', 'fries', 'donut']
+const base = {
+    // margin: { top: 25, right: 5, bottom: 50, left: 35 },
+    // data: generateCountriesData(keys, { size: 7 }),
+    // indexBy: 'country',
+    // keys,
     padding: 0.2,
     labelTextColor: 'inherit:darker(1.4)',
     labelSkipWidth: 16,
@@ -21,6 +21,14 @@ const commonProps = {
 
 const BarChart = (props) => {
     const theme = useTheme();
+    const commonProps = {
+        padding: 0.2,
+        labelTextColor: 'inherit:darker(1.4)',
+        labelSkipWidth: 16,
+        labelSkipHeight: 16,
+        data: props.data,
+        ...props.properties
+    }
     return (
         <>
             <Title>{props.title}</Title>

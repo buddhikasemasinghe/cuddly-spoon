@@ -10,7 +10,7 @@ import Navigation from './router/Navigation'
 
 const client = new ApolloClient({
   uri: 'https://covid19-modelizer-proxy.azurewebsites.net/',
-  // uri: 'http://localhost:8080',
+ // uri: 'http://localhost:8080',
   link: new HttpLink(),
   cache: new InMemoryCache()
 });
